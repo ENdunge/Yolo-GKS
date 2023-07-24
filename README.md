@@ -21,3 +21,7 @@ Make sure that you have the following installed:
  `npm start`
 
  ### Go ahead a nd add a product (note that the price field only takes a numeric input)
+
+ ## The application has been deployed to Google Kubernetes Service and is available on 
+
+ # http://34.100.222.142
