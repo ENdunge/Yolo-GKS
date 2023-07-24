@@ -46,3 +46,20 @@ Push the docker image to the repository
 ## Creating a GKE cluster
 ###  gcloud config set compute/region asia-south1
 ###  gcloud container clusters create-auto yolo-client-cluster
+
+## Deploying the app to GKE
+
+1. Ensure that GKE is connected
+### gcloud container clusters get-credentials hello-cluster --region asia-south1
+
+2. Create a Kubernetes Deployment for the yolo-client-app docker image
+### kubectl create deployment yolo-client-app --image=asia-south1-docker.pkg.dev/${PROJECT_ID}/yolo-client-repo/yolo-client-app:v1
+
+3. Set the baseline number of deployments to 3
+### kubectl scale deployment yolo-client-app --replicas=3
+
+4. Create a HorizontalPodAutoscaler resource for the deployment
+### kubectl autoscale deployment yolo-client-app --cpu-percent=80 --min=1 --max=5
+
+5. To get pods
+### kubectl get pods
