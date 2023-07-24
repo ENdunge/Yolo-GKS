@@ -21,3 +21,11 @@ set default region to asia-south1. This is the nearest region and it was selecte
 This command instructs Docker to build the image using the Dockerfile in the current directory, save it to the local environment, and tag it with the same name i.e asia-south1-docker.pkg.dev/${PROJECT_ID}/yolo-client-repo/yolo-client-app:v1
 
 The asia-south1-docker.pkg.dev prefix refers to Artifact Registry, regional host for the repository.
+
+## Cheking Docker images
+### docker images
+Run the docker images command to verify that the build was successful.
+
+## Add IAM policy bindings to the service account
+
+### gcloud artifacts repositories add-iam-policy-binding yolo-client-repo --location=asia-south1 --member=serviceAccount:114506246157-compute@developer.gserviceaccount.com --role="roles/artifactregistry.reader"
