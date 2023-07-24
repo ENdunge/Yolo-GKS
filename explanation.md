@@ -75,3 +75,8 @@ To get service details, run:
 ### Copy the EXTERNAL_IP address and open it on a new brower tab. 
 
 # The appication is available on IP : 34.100.222.142.
+
+# Creating a StatefulSet
+### kubectl get pods -w -l app=nginx
+### kubectl apply -f web.yaml
+### kubectl get statefulset web
