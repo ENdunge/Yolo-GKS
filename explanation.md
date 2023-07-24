@@ -72,4 +72,6 @@ To get service details, run:
 ### kubectl get service
 
 ## External IP
-### Copy the EXTERNAL_IP address to the clipboard (for instance: 34.100.222.142).
+### Copy the EXTERNAL_IP address and open it on a new brower tab. 
+
+# The appication is available on IP : 34.100.222.142.
