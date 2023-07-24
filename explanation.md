@@ -50,7 +50,7 @@ Push the docker image to the repository
 ## Deploying the app to GKE
 
 1. Ensure that GKE is connected
-### gcloud container clusters get-credentials hello-cluster --region asia-south1
+### gcloud container clusters get-credentials yolo-client-cluster --region asia-south1
 
 2. Create a Kubernetes Deployment for the yolo-client-app docker image
 ### kubectl create deployment yolo-client-app --image=asia-south1-docker.pkg.dev/${PROJECT_ID}/yolo-client-repo/yolo-client-app:v1
@@ -63,3 +63,13 @@ Push the docker image to the repository
 
 5. To get pods
 ### kubectl get pods
+
+## Exposing the app to the internet
+### kubectl expose deployment yolo-client-app --name=yolo-client-app-service --type=LoadBalancer --port 80 --target-port 8080
+
+To get service details, run: 
+
+### kubectl get service
+
+## External IP
+### Copy the EXTERNAL_IP address to the clipboard (for instance: 34.100.222.142).
