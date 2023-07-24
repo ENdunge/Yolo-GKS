@@ -37,4 +37,12 @@ To test the container image using docker locally, run:
 ## Pushing the Docker image to Artifact Registry
 The container image must be uploaded to a registry so that GKE cluster can download and run the container image.
 
+Configure the docker command-line tool to authenticate to Artifact Registry
+### gcloud auth configure-docker asia-south1-docker.pkg.dev
+
+Push the docker image to the repository
 ### docker push asia-south1-docker.pkg.dev/${PROJECT_ID}/yolo-client-repo/yolo-client-app:v1
+
+## Creating a GKE cluster
+###  gcloud config set compute/region asia-south1
+###  gcloud container clusters create-auto yolo-client-cluster
