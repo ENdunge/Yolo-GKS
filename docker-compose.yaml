@@ -1,0 +1,41 @@
+version: '3'
+services:
+  frontend:
+    image: yolo-client:v1.0.0
+    depends_on:
+      - backend
+    stdin_open: true  
+    ports:
+      - 3000:3003
+    networks:
+      yolonet:
+        ipv4_address: 172.18.0.4
+  backend:
+    image: yolo-server:v1.0.0
+    environment:
+      MONGODB_URI: 'mongodb://Estus:127.0.0.1#@172.20.0.2:27017'
+      PORT: 5000
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo
+    networks:
+      yolonet:
+        ipv4_address: 172.18.0.3    
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: Estus
+      MONGO_INITDB_ROOT_PASSWORD: 127.0.0.1#
+    ports:
+      - 27017:27017
+    networks:
+      yolonet:
+        ipv4_address: 172.18.0.2
+
+networks:
+  yolonet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16
